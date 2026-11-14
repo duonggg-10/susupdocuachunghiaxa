@@ -104,10 +104,10 @@ const CH1=[
 ];
 /* Chặng 2: 4 thẻ lá cờ */
 const CH2={
- vn:{name:"Việt Nam",sub:"Đổi mới từ 1986",qs:[5,10,12]},
+ vn:{name:"Việt Nam",sub:"Đổi mới từ 1986",qs:[5,10]},
  cn:{name:"Trung Quốc",sub:"Cải cách, mở cửa",qs:[4]},
  la:{name:"Lào",sub:"Đổi mới đất nước",qs:[8]},
- cu:{name:"Cuba",sub:"Kiên định, cải cách",qs:[9,14]}
+ cu:{name:"Cuba",sub:"Kiên định, cải cách",qs:[9]}
 };
 const FLAG={
  vn:'<rect width="60" height="40" fill="#da251d"/><use href="#st" transform="translate(30 21) scale(1.7)" fill="#ff0"/>',
@@ -176,11 +176,11 @@ function ch1Intro(){
  document.getElementById("go").onclick=()=>quiz(CH1,{tag:"Chặng 1 · Đông Âu & Liên Xô",bars:true},ch1End);
 }
 function ch1End(){
- const fell=Object.values(stats).some(v=>v<=30);
+ const fell=Object.values(stats).some(v=>v<=30),P=Object.values(stats).every(v=>v===100);
  put(`<div class="top"><span>Kết thúc chặng 1</span><span class="sc">★ ${score} điểm</span></div>
- <div class="year crumble">25/12/1991</div><h1>Liên bang Xô viết tan rã</h1><div class="stamp">Đã tan rã</div>
+ <div class="year${P?"":" crumble"}">25/12/1991</div><h1>${P?"Bạn đã nhận ra mọi sai lầm":"Liên bang Xô viết tan rã"}</h1>${P?"":'<div class="stamp">Đã tan rã</div>'}
  ${barsHtml()}
- <div class="panel"><p>${fell?"Có chỉ số tụt thấp: đúng với những gì đã xảy ra, khi sai lầm chồng chất thì khủng hoảng lan rộng.":"Dù bạn giữ được các chỉ số trong trò chơi, lịch sử thực tế đã đi theo hướng khác."}</p>
+ <div class="panel"><p>${fell?"Có chỉ số tụt thấp: đúng với những gì đã xảy ra, khi sai lầm chồng chất thì khủng hoảng lan rộng.":"Bạn đã nhận diện đúng mọi sai lầm. Nhưng trong thực tế, những sai lầm ấy không được sửa kịp: ngày 25/12/1991, Liên bang Xô viết tan rã."}</p>
  <ul><li>Đường lối lãnh đạo cứng nhắc, duy ý chí, xa rời thực tiễn.</li><li>Kinh tế bao cấp trì trệ, chậm ứng dụng khoa học – kĩ thuật.</li><li>Cải tổ sai lầm, xóa bỏ vai trò lãnh đạo của Đảng Cộng sản.</li></ul></div>
  <button class="btn" id="go">Sang chặng 2</button>`);
  document.getElementById("go").onclick=menu;
@@ -190,13 +190,13 @@ function menu(){
  const all=Object.keys(CH2).every(k=>done[k]);
  put(`<div class="top"><span>Chặng 2 · Từ 1991 đến nay</span><span class="sc">★ ${score} điểm</span></div>
  <h2>Chọn một lá cờ để vượt thử thách. Mở đủ 4 thẻ để vào câu chốt.</h2>
- <div class="grid">${Object.entries(CH2).map(([k,c])=>`<button class="card ${done[k]?"done":""}" data-k="${k}" ${done[k]?"disabled":""}>${flag(k)}<strong>${c.name}</strong><small>${c.sub} · ${c.qs.length} câu</small></button>`).join("")}</div>
- ${all?'<button class="btn" id="fin">Câu chốt</button>':""}`);
+ <div class="grid">${Object.entries(CH2).map(([k,c])=>`<button class="card ${done[k]?"done":""}" data-k="${k}" ${done[k]?"disabled":""}>${flag(k)}<strong>${c.name}</strong><small>${c.qs.length} câu hỏi</small></button>`).join("")}</div>
+ ${all?'<button class="btn" id="fin">Câu chốt (3 câu)</button>':""}`);
  app.querySelectorAll(".card:not(.done)").forEach(b=>b.onclick=()=>{
   const k=b.dataset.k;
   quiz(CH2[k].qs.map(n=>mk(n)),{tag:"Chặng 2 · "+CH2[k].name},()=>{done[k]=1;k==="vn"?vnFacts():menu()});
  });
- if(all)document.getElementById("fin").onclick=()=>quiz([mk(15)],{tag:"Câu chốt"},finale);
+ if(all)document.getElementById("fin").onclick=()=>quiz([mk(12),mk(14),mk(15)],{tag:"Câu chốt"},finale);
 }
 function vnFacts(){
  put(`<div class="top"><span>Việt Nam · 40 năm Đổi mới (1986–2026)</span></div>
