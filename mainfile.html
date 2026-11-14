@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cải tổ hay sụp đổ? – Lịch sử</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&family=Barlow+Condensed:wght@800&display=swap" rel="stylesheet">
+<style>
+body{--bg:#16100f;--ac:#e0352b;--paper:#f3e9d2;--ink:#1b1210;--ok:#2f9e5a;--bad:#c9372c;margin:0;min-height:100vh;background:var(--bg);color:var(--paper);font-family:"Be Vietnam Pro",system-ui,sans-serif;font-size:clamp(16px,1.6vw,24px);overflow-x:hidden}
+body[data-ch="2"]{--bg:#0c2542;--ac:#f2c14e}
+body[data-ch="3"]{--bg:#050505}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(115deg,transparent 0 62%,var(--ac) 62% 63.5%,transparent 63.5% 66%,var(--ac) 66% 66.6%,transparent 66.6%),radial-gradient(circle at 90% 14%,color-mix(in srgb,var(--ac) 40%,transparent) 0 16vmin,transparent 16.2vmin),var(--bg)}
+*{box-sizing:border-box}
+#app{max-width:1200px;margin:0 auto;padding:clamp(14px,3vw,40px)}
+h1,.year,.big,.stamp,.card strong{font-family:"Barlow Condensed","Be Vietnam Pro",sans-serif;font-weight:800;text-transform:uppercase}
+h1{font-size:clamp(46px,9vw,128px);line-height:.92;margin:.15em 0 .25em;letter-spacing:.01em}
+h1 span{display:block}h1 .r{color:var(--ac)}
+.hero h1 span{animation:rise .7s both}.hero h1 span:nth-child(2){animation-delay:.15s}.hero h1 span:nth-child(3){animation-delay:.3s}
+.bigstar{position:absolute;right:2vw;top:3vw;width:clamp(120px,22vw,300px);fill:var(--ac);opacity:.9;z-index:-1}
+.lead{max-width:52ch;line-height:1.6;font-size:1.1em;margin:0 0 1.4em}
+.btn,.opts button,.card{font:inherit;cursor:pointer}
+.btn{background:var(--paper);color:var(--ink);border:4px solid var(--ink);box-shadow:6px 6px 0 var(--ac);padding:.6em 1.4em;font-weight:800;transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--ac)}
+.btn.ghost{background:transparent;color:var(--paper);border-color:var(--paper);box-shadow:none}
+:focus-visible{outline:4px solid var(--paper);outline-offset:3px}
+.top{display:flex;justify-content:space-between;gap:12px;font-weight:600;opacity:.9}
+.sc{color:var(--ac);font-weight:800;background:var(--paper);padding:0 .6em;border-radius:3px}
+.bars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0}
+.bar b{display:flex;justify-content:space-between;font-size:.8em;margin-bottom:4px}
+.bar i{display:block;position:relative;height:18px;background:#ffffff22}
+.bar i u{display:block;height:100%;background:var(--ok);transition:width .6s,background .6s}
+.bar i u.low{background:var(--bad);animation:blink 1s infinite}
+.bar i::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 calc(10% - 4px),var(--bg) calc(10% - 4px) 10%)}
+.year{font-size:clamp(70px,13vw,180px);line-height:.9;color:transparent;-webkit-text-stroke:3px var(--ac);margin:.1em 0}
+.year.sm{font-size:clamp(40px,5.5vw,76px);margin:0}
+.year.crumble{animation:crumble 2.4s .3s forwards}
+.stamp{display:inline-block;border:6px solid var(--ac);color:var(--ac);padding:0 .4em;font-size:clamp(30px,5vw,64px);transform:rotate(-6deg);animation:stamp .5s .9s both cubic-bezier(.2,2,.4,1)}
+.qcard,.panel{background:var(--paper);color:var(--ink);border:4px solid var(--ink);box-shadow:10px 10px 0 var(--ac);padding:clamp(14px,2.4vw,32px);margin:14px 10px 28px 0}
+.qcard h2{margin:0;font-size:clamp(20px,2.7vw,40px);line-height:1.35;font-weight:700}
+.panel ul{margin:.3em 0;padding-left:1.2em}.panel li{margin:.5em 0;line-height:1.5}.panel p{margin:0;line-height:1.5}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.opts button{display:flex;gap:.8em;align-items:stretch;text-align:left;background:var(--paper);color:var(--ink);border:4px solid var(--ink);padding:0;line-height:1.4;transition:transform .12s,box-shadow .12s}
+.opts button b{display:grid;place-items:center;min-width:2.2em;background:var(--ink);color:var(--paper);font-size:1.2em}
+.opts button span{padding:.7em .8em .7em 0}
+.opts button:hover:not(:disabled){transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--ac)}
+.opts button.ok{background:#b8e6c6;border-color:var(--ok)}.opts button.ok b{background:var(--ok)}
+.opts button.bad{background:#f5b9b2;border-color:var(--bad)}.opts button.bad b{background:var(--bad)}
+.opts button:disabled{cursor:default}
+#fb{margin-top:22px;min-height:3em;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;font-size:1.1em}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.6vw,36px);margin:22px 0}
+.card{background:var(--paper);color:var(--ink);border:4px solid var(--ink);box-shadow:8px 8px 0 var(--ac);padding:16px;text-align:center;position:relative;transition:transform .15s,box-shadow .15s}
+.card svg.f{width:100%;max-width:320px;border:3px solid var(--ink)}
+.card strong{display:block;margin-top:.3em;font-size:1.9em;line-height:1}
+.card small{opacity:.75}
+.card:hover:not(:disabled){transform:translate(-4px,-4px) rotate(-1deg);box-shadow:12px 12px 0 var(--ac)}
+.card.done{background:var(--ac);box-shadow:none;transform:translate(6px,6px);cursor:default}
+.card.done::after{content:"★ Đã mở";position:absolute;top:-4px;right:-4px;background:var(--ink);color:var(--paper);padding:.2em .7em;font-weight:800;font-size:.85em}
+.big{font-size:clamp(100px,22vw,300px);line-height:.85;color:var(--ac)}.big small{font-size:.3em;color:var(--paper)}
+.media{margin:20px 0;aspect-ratio:16/9;background:#000;box-shadow:0 0 0 4px var(--paper),0 0 90px #e0352b88;display:grid;place-items:center}
+.media video,.media iframe{width:100%;height:100%;border:0}
+.shake{animation:shake .4s}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}}
+@keyframes shake{25%{transform:translateX(-10px)}50%{transform:translateX(10px)}75%{transform:translateX(-6px)}}
+@keyframes blink{50%{opacity:.45}}
+@keyframes crumble{to{filter:grayscale(1);opacity:.3;transform:translateY(16px) skewX(-7deg)}}
+@keyframes stamp{from{opacity:0;transform:rotate(-6deg) scale(3)}}
+@media(max-width:700px){.opts,.bars{grid-template-columns:1fr}.bigstar{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><polygon id="st" points="0,-10 2.35,-3.2 9.5,-3.1 3.8,1.2 5.9,8.1 0,4 -5.9,8.1 -3.8,1.2 -9.5,-3.1 -2.35,-3.2"/></defs></svg>
+<main id="app"></main>
+<script>
+/* ===== CẤU HÌNH VIDEO =====
+   Điền tên file .mp4 (đặt cùng thư mục) HOẶC link YouTube (youtube.com / youtu.be).
+   Để trống "" nếu chưa có video. */
+const VIDEO = "video.mp4";
+
+/* ===== NGÂN HÀNG CÂU HỎI: [câu hỏi, đáp án ĐÚNG, sai1, sai2, sai3] ===== */
+const Q = {
+ 2:["Một trong những nguyên nhân dẫn đến sự khủng hoảng của chủ nghĩa xã hội ở Đông Âu và Liên Xô là gì?","Đường lối lãnh đạo cứng nhắc, duy ý chí.","Các nước tăng cường hợp tác kinh tế.","Khoa học – công nghệ phát triển nhanh.","Đời sống nhân dân ngày càng được cải thiện."],
+ 3:["Nguyên nhân kinh tế nào dẫn đến sự khủng hoảng của chủ nghĩa xã hội ở Đông Âu và Liên Xô?","Chậm ứng dụng thành tựu khoa học – kĩ thuật vào sản xuất.","Không tham gia các tổ chức quốc tế.","Không có tài nguyên thiên nhiên.","Không tiến hành công nghiệp hóa."],
+ 4:["Từ năm 1991 đến nay, các nước nào sau đây tiếp tục con đường xây dựng chủ nghĩa xã hội?","Trung Quốc, Việt Nam, Lào, Cuba.","Mỹ, Anh, Pháp, Đức.","Nhật Bản, Hàn Quốc, Singapore.","Nga, Mỹ, Trung Quốc, Nhật Bản."],
+ 5:["Việt Nam bắt đầu tiến hành công cuộc Đổi mới vào năm nào?","1986.","1975.","1978.","1991."],
+ 6:["Vì sao đường lối lãnh đạo cứng nhắc, duy ý chí là một nguyên nhân dẫn đến khủng hoảng ở Đông Âu và Liên Xô?","Vì không phù hợp với thực tiễn, gây ra nhiều khó khăn trong quá trình phát triển.","Vì làm tăng cường sự hợp tác giữa các nước.","Vì thúc đẩy quá trình đổi mới kinh tế.","Vì giúp nâng cao năng suất lao động."],
+ 7:["Việc xóa bỏ vai trò lãnh đạo của Đảng Cộng sản trong quá trình cải tổ đã dẫn đến hậu quả gì?","Gây ra tình trạng khủng hoảng, bất ổn và rối loạn.","Tăng cường sự ổn định chính trị.","Thúc đẩy kinh tế phát triển nhanh chóng.","Tăng cường sức mạnh của hệ thống xã hội chủ nghĩa."],
+ 8:["Điểm chung trong quá trình phát triển của Việt Nam, Lào và Trung Quốc từ năm 1991 đến nay là gì?","Tiến hành cải cách, mở cửa, đổi mới nhưng vẫn kiên định con đường xã hội chủ nghĩa.","Từ bỏ con đường xây dựng chủ nghĩa xã hội.","Chuyển sang xây dựng nền kinh tế tư bản chủ nghĩa.","Ngừng hội nhập với nền kinh tế thế giới."],
+ 9:["Vì sao Cuba vẫn kiên định con đường xây dựng chủ nghĩa xã hội sau năm 1991 mặc dù gặp nhiều khó khăn?","Vì Cuba từng bước cải cách kinh tế, đồng thời giữ vững những nguyên tắc của chủ nghĩa xã hội.","Vì Cuba không chịu tác động của tình hình thế giới.","Vì Cuba có sự phát triển kinh tế vượt trội so với tất cả các nước.","Vì Cuba không cần tiến hành đổi mới kinh tế."],
+ 10:["Thành tựu của công cuộc Đổi mới ở Việt Nam được thể hiện rõ nhất qua nội dung nào?","Đất nước thoát khỏi khủng hoảng kinh tế – xã hội, đời sống nhân dân được cải thiện.","Việt Nam ngừng hội nhập kinh tế quốc tế.","Việt Nam từ bỏ định hướng xã hội chủ nghĩa.","Việt Nam không còn gặp bất kỳ khó khăn nào trong phát triển."],
+ 11:["Một quốc gia duy trì mô hình kinh tế tập trung quan liêu, bao cấp trong thời gian dài, chậm đổi mới và không ứng dụng thành tựu khoa học – kĩ thuật. Điều này có thể dẫn đến hậu quả nào?","Kinh tế trì trệ, năng suất lao động giảm sút.","Năng suất lao động tăng nhanh.","Kinh tế phát triển ổn định và bền vững.","Đời sống nhân dân được nâng cao nhanh chóng."],
+ 12:["Một quốc gia đang xây dựng chủ nghĩa xã hội quyết định cải cách kinh tế, mở rộng hội nhập quốc tế nhưng vẫn giữ vững định hướng xã hội chủ nghĩa. Quốc gia đó đang thực hiện đường lối tương tự nước nào?","Việt Nam.","Mỹ.","Anh.","Nhật Bản."],
+ 13:["Qua sự sụp đổ của chủ nghĩa xã hội ở Đông Âu và Liên Xô, bài học kinh nghiệm quan trọng nào có thể rút ra?","Phải thường xuyên đổi mới, cải cách phù hợp với thực tiễn và giữ vững vai trò lãnh đạo của Đảng Cộng sản.","Không cần thay đổi đường lối phát triển khi tình hình thay đổi.","Không nên ứng dụng khoa học – kĩ thuật vào sản xuất.","Cần từ bỏ hoàn toàn mục tiêu xây dựng chủ nghĩa xã hội."],
+ 14:["Một quốc gia thực hiện đổi mới kinh tế, phát triển nhiều ngành nghề mới như du lịch, công nghệ sinh học, khai thác dầu khí; đồng thời ưu tiên giáo dục và y tế miễn phí. Những đặc điểm này phù hợp với quá trình phát triển của quốc gia nào?","Cuba.","Mỹ.","Nhật Bản.","Anh."],
+ 15:["Nhận định nào sau đây phản ánh đúng nhất tình hình chủ nghĩa xã hội từ năm 1991 đến nay?","Một số nước xã hội chủ nghĩa tiếp tục cải cách, đổi mới và đạt được nhiều thành tựu quan trọng.","Chủ nghĩa xã hội hoàn toàn chấm dứt trên thế giới.","Tất cả các nước xã hội chủ nghĩa đều từ bỏ con đường đã lựa chọn.","Các nước xã hội chủ nghĩa không còn tiến hành hội nhập quốc tế."]
+};
+const mk=(id,extra={})=>({q:Q[id][0],o:Q[id].slice(1),...extra});
+
+/* Chặng 1: mỗi câu gắn với một chỉ số và một mốc thời gian */
+const CH1=[
+ mk(2,{stat:"Chính trị",year:1985}),mk(6,{stat:"Chính trị",year:1986}),
+ mk(3,{stat:"Kinh tế",year:1988}),mk(11,{stat:"Kinh tế",year:1989}),
+ mk(7,{stat:"Chính trị",year:1990}),mk(13,{stat:"Đời sống",year:1991})
+];
+/* Chặng 2: 4 thẻ lá cờ */
+const CH2={
+ vn:{name:"Việt Nam",sub:"Đổi mới từ 1986",qs:[5,10,12]},
+ cn:{name:"Trung Quốc",sub:"Cải cách, mở cửa",qs:[4]},
+ la:{name:"Lào",sub:"Đổi mới đất nước",qs:[8]},
+ cu:{name:"Cuba",sub:"Kiên định, cải cách",qs:[9,14]}
+};
+const FLAG={
+ vn:'<rect width="60" height="40" fill="#da251d"/><use href="#st" transform="translate(30 21) scale(1.7)" fill="#ff0"/>',
+ cn:'<rect width="60" height="40" fill="#de2910"/><g fill="#ffde00"><use href="#st" transform="translate(11 11) scale(1.1)"/><use href="#st" transform="translate(22 4) scale(.4)"/><use href="#st" transform="translate(26 9) scale(.4)"/><use href="#st" transform="translate(26 15) scale(.4)"/><use href="#st" transform="translate(22 20) scale(.4)"/></g>',
+ la:'<rect width="60" height="40" fill="#ce1126"/><rect y="10" width="60" height="20" fill="#002868"/><circle cx="30" cy="20" r="8" fill="#fff"/>',
+ cu:'<rect width="60" height="40" fill="#fff"/><g fill="#002a8f"><rect width="60" height="8"/><rect y="16" width="60" height="8"/><rect y="32" width="60" height="8"/></g><polygon points="0,0 26,20 0,40" fill="#cf142b"/><use href="#st" transform="translate(8 20) scale(1.1)" fill="#fff"/>'
+};
+const flag=k=>`<svg class="f" viewBox="0 0 60 40" role="img" aria-label="Cờ ${CH2[k].name}">${FLAG[k]}</svg>`;
+
+/* ===== TRẠNG THÁI ===== */
+const app=document.getElementById("app");
+let score=0,stats,done,onKey=null;
+const reset=()=>{score=0;stats={"Kinh tế":100,"Chính trị":100,"Đời sống":100};done={}};
+const put=h=>{onKey=null;app.innerHTML=h;window.scrollTo(0,0)};
+document.addEventListener("keydown",e=>onKey&&onKey(e));
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const barsHtml=()=>`<div class="bars" id="bars">${Object.entries(stats).map(([k,v])=>`<div class="bar"><b><span>${k}</span><span>${v}%</span></b><i><u class="${v<=30?"low":""}" style="width:${v}%"></u></i></div>`).join("")}</div>`;
+
+/* ===== LƯỢT TRẢ LỜI ===== */
+function quiz(list,o,end){
+ let i=0,cur,locked;
+ const show=()=>{
+  const q=list[i];locked=false;
+  cur=shuffle(q.o.map((t,k)=>({t,ok:k===0})));
+  put(`<div class="top"><span>${o.tag} · Câu ${i+1}/${list.length}</span><span class="sc">★ ${score} điểm</span></div>
+  ${o.bars?barsHtml()+`<div class="year sm">${q.year}</div>`:""}
+  <div class="qcard"><h2>${q.q}</h2></div>
+  <div class="opts">${cur.map((x,k)=>`<button data-k="${k}"><b>${"ABCD"[k]}</b><span>${x.t}</span></button>`).join("")}</div>
+  <div id="fb"></div>`);
+  app.querySelectorAll(".opts button").forEach(b=>b.onclick=()=>pick(+b.dataset.k));
+  onKey=e=>{const k="abcd1234".indexOf(e.key.toLowerCase());if(k>=0&&!locked)pick(k%4)};
+ };
+ const pick=k=>{
+  if(locked)return;locked=true;
+  const q=list[i],ok=cur[k].ok,btns=app.querySelectorAll(".opts button");
+  btns.forEach((b,n)=>{b.disabled=true;if(cur[n].ok)b.classList.add("ok");else if(n===k)b.classList.add("bad")});
+  app.classList.remove("shake");void app.offsetWidth;if(!ok)app.classList.add("shake");
+  if(ok)score+=10;
+  else if(o.bars)stats[q.stat]=Math.max(0,stats[q.stat]-35);
+  if(o.bars)document.getElementById("bars").outerHTML=barsHtml();
+  const last=i===list.length-1;
+  document.getElementById("fb").innerHTML=`<strong>${ok?"Chính xác! +10 điểm":(o.bars?`Sai rồi – chỉ số ${q.stat} tụt mạnh.`:"Chưa đúng.")}</strong><button class="btn" id="nx">${last?"Tiếp tục":"Câu kế tiếp"} (Enter)</button>`;
+  const nx=()=>{last?end():(i++,show())};
+  document.getElementById("nx").onclick=nx;
+  onKey=e=>{if(e.key==="Enter"||e.key===" "||e.key==="ArrowRight"){e.preventDefault();nx()}};
+  document.getElementById("nx").focus();
+ };
+ show();
+}
+
+/* ===== MÀN HÌNH ===== */
+function home(){
+ reset();document.body.dataset.ch=0;
+ put(`<div class="hero"><svg class="bigstar" viewBox="-12 -12 24 24" aria-hidden="true"><use href="#st"/></svg>
+ <h1><span>Cải tổ</span><span>hay</span><span class="r">sụp đổ?</span></h1>
+ <p class="lead">Bạn sẽ ngồi vào ghế lãnh đạo ở hai thời điểm: Liên Xô những năm 1985–1991, rồi bốn nước vẫn đi tiếp con đường xã hội chủ nghĩa sau 1991. Mỗi quyết định đúng giữ vững đất nước, mỗi quyết định sai đều phải trả giá.</p>
+ <button class="btn" id="go">Bắt đầu</button></div>`);
+ document.getElementById("go").onclick=ch1Intro;
+ onKey=e=>{if(e.key==="Enter")ch1Intro()};
+}
+function ch1Intro(){
+ document.body.dataset.ch=1;
+ put(`<div class="top"><span>Chặng 1</span></div><h1>Liên Xô, 1985</h1>
+ <p>Đất nước đang gặp khó khăn. Hãy giữ cho ba chỉ số Kinh tế, Chính trị và Đời sống không tụt về 0. Trả lời sai một câu, chỉ số liên quan mất 35%.</p>
+ ${barsHtml()}<button class="btn" id="go">Vào chặng 1</button>`);
+ document.getElementById("go").onclick=()=>quiz(CH1,{tag:"Chặng 1 · Đông Âu & Liên Xô",bars:true},ch1End);
+}
+function ch1End(){
+ const fell=Object.values(stats).some(v=>v<=30);
+ put(`<div class="top"><span>Kết thúc chặng 1</span><span class="sc">★ ${score} điểm</span></div>
+ <div class="year crumble">25/12/1991</div><h1>Liên bang Xô viết tan rã</h1><div class="stamp">Đã tan rã</div>
+ ${barsHtml()}
+ <div class="panel"><p>${fell?"Có chỉ số tụt thấp: đúng với những gì đã xảy ra, khi sai lầm chồng chất thì khủng hoảng lan rộng.":"Dù bạn giữ được các chỉ số trong trò chơi, lịch sử thực tế đã đi theo hướng khác."}</p>
+ <ul><li>Đường lối lãnh đạo cứng nhắc, duy ý chí, xa rời thực tiễn.</li><li>Kinh tế bao cấp trì trệ, chậm ứng dụng khoa học – kĩ thuật.</li><li>Cải tổ sai lầm, xóa bỏ vai trò lãnh đạo của Đảng Cộng sản.</li></ul></div>
+ <button class="btn" id="go">Sang chặng 2</button>`);
+ document.getElementById("go").onclick=menu;
+}
+function menu(){
+ document.body.dataset.ch=2;
+ const all=Object.keys(CH2).every(k=>done[k]);
+ put(`<div class="top"><span>Chặng 2 · Từ 1991 đến nay</span><span class="sc">★ ${score} điểm</span></div>
+ <h2>Chọn một lá cờ để vượt thử thách. Mở đủ 4 thẻ để vào câu chốt.</h2>
+ <div class="grid">${Object.entries(CH2).map(([k,c])=>`<button class="card ${done[k]?"done":""}" data-k="${k}" ${done[k]?"disabled":""}>${flag(k)}<strong>${c.name}</strong><small>${c.sub} · ${c.qs.length} câu</small></button>`).join("")}</div>
+ ${all?'<button class="btn" id="fin">Câu chốt</button>':""}`);
+ app.querySelectorAll(".card:not(.done)").forEach(b=>b.onclick=()=>{
+  const k=b.dataset.k;
+  quiz(CH2[k].qs.map(n=>mk(n)),{tag:"Chặng 2 · "+CH2[k].name},()=>{done[k]=1;k==="vn"?vnFacts():menu()});
+ });
+ if(all)document.getElementById("fin").onclick=()=>quiz([mk(15)],{tag:"Câu chốt"},finale);
+}
+function vnFacts(){
+ put(`<div class="top"><span>Việt Nam · 40 năm Đổi mới (1986–2026)</span></div>
+ <h1>Con số thời sự</h1>
+ <div class="panel"><ul>
+ <li>Đại hội XIV của Đảng diễn ra từ 19 đến 23/1/2026 tại Hà Nội.</li>
+ <li>Tăng trưởng kinh tế bình quân khoảng 6,7%/năm trong 40 năm.</li>
+ <li>GDP năm 2025 đứng thứ 32 thế giới; hội nhập sâu với 17 hiệp định thương mại.</li>
+ <li>Tỷ lệ nghèo giảm từ hơn 58% (1993) xuống dưới 3% (2023).</li>
+ <li>Mục tiêu: trở thành nước phát triển, thu nhập cao vào năm 2045.</li></ul></div>
+ <button class="btn" id="go">Quay lại các thẻ</button>`);
+ document.getElementById("go").onclick=menu;
+}
+function media(src){
+ const y=src.match(/(?:youtu\.be\/|you\.tube\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);
+ if(y)return `<iframe src="https://www.youtube.com/embed/${y[1]}?autoplay=1&rel=0" title="Video kết" allow="autoplay;encrypted-media;picture-in-picture;fullscreen" allowfullscreen></iframe>`;
+ if(/\.mp4(\?.*)?$/i.test(src))return `<video src="${src}" autoplay controls playsinline preload="metadata"></video>`;
+ return `<p style="padding:2em;text-align:center">${src?"Định dạng video chưa hỗ trợ. Hãy dùng file .mp4 hoặc link YouTube.":"Chưa có video. Điền biến VIDEO trong index.html."}</p>`;
+}
+function finale(){
+ document.body.dataset.ch=3;
+ const r=score>=120?"Nhà lãnh đạo sáng suốt":score>=80?"Nhà cải cách bản lĩnh":score>=40?"Người học việc chăm chỉ":"Cần ôn lại bài học";
+ put(`<div class="media">${media(VIDEO)}</div>
+ <div class="top" style="align-items:center;margin-top:8px"><span>${r}</span><span class="sc">★ ${score}/140 điểm</span><button class="btn ghost" id="again">Chơi lại</button></div>`);
+ const v=app.querySelector("video");
+ if(v){const p=v.play();if(p)p.catch(()=>{v.muted=true;v.play().catch(()=>{})})}
+ document.getElementById("again").onclick=home;
+}
+home();
+</script>
+</body>
+</html>
