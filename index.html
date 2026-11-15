@@ -58,6 +58,7 @@ h1 span{display:block}h1 .r{color:var(--ac)}
 .big{font-size:clamp(100px,22vw,300px);line-height:.85;color:var(--ac)}.big small{font-size:.3em;color:var(--paper)}
 .media{margin:20px 0;aspect-ratio:16/9;background:#000;box-shadow:0 0 0 4px var(--paper),0 0 90px #e0352b88;display:grid;place-items:center}
 .media video,.media iframe{width:100%;height:100%;border:0}
+.media{position:relative}.shield{position:absolute;inset:0}
 .shake{animation:shake .4s}
 @keyframes rise{from{opacity:0;transform:translateY(40px)}}
 @keyframes shake{25%{transform:translateX(-10px)}50%{transform:translateX(10px)}75%{transform:translateX(-6px)}}
@@ -212,7 +213,7 @@ function vnFacts(){
 }
 function media(src){
  const y=src.match(/(?:youtu\.be\/|you\.tube\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);
- if(y)return `<iframe src="https://www.youtube.com/embed/${y[1]}?autoplay=1&rel=0" title="Video kết" allow="autoplay;encrypted-media;picture-in-picture;fullscreen" allowfullscreen></iframe>`;
+ if(y)return `<iframe src="https://www.youtube.com/embed/${y[1]}?autoplay=1&controls=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0&playsinline=1" title="Video kết" allow="autoplay;encrypted-media;picture-in-picture;fullscreen" ></iframe><div class="shield"></div>`;
  if(/\.mp4(\?.*)?$/i.test(src))return `<video src="${src}" autoplay controls playsinline preload="metadata"></video>`;
  return `<p style="padding:2em;text-align:center">${src?"Định dạng video chưa hỗ trợ. Hãy dùng file .mp4 hoặc link YouTube.":"Chưa có video. Điền biến VIDEO trong index.html."}</p>`;
 }
